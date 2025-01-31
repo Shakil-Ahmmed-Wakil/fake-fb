@@ -76,7 +76,7 @@
           <div id="post-content" class="content px-3">
             মোটরসাইকেল শোডাউনের মত ছাপড়িগিরি দুনিয়ায় আর দ্বিতীয়টা নেই....
           </div>
-          <div class="images w-full flex justify-center hidden">
+          <div class="images w-full flex justify-center">
             <img id="post-image" src="assets/post-image.jpg" alt="Post Image" />
           </div>
           <div
@@ -485,8 +485,8 @@
           // Update UI
           document.getElementById("author-name").innerText = authorName;
           document.getElementById("post-content").innerText = postContent;
-          document.getElementById("comments-number").innerText = commentsNumber;
-          document.getElementById("shares-number").innerText = sharesNumber;
+          document.getElementById("comments-number").innerText = formatNumber(commentsNumber);
+          document.getElementById("shares-number").innerText = formatNumber(sharesNumber);
 
           if (verified) {
             document
@@ -612,7 +612,7 @@
       function downloadPost() {
         const container = document.getElementById("post-area");
         htmlToImage
-          .toPng(container, { pixelRatio: 3 })
+          .toPng(container, { pixelRatio: 5 })
           .then(dataUrl => {
             const link = document.createElement("a");
             link.href = dataUrl;
