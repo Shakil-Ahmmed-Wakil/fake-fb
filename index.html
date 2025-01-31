@@ -1,0 +1,662 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Facebook Post Generator</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+  </head>
+  <body class="bg-gray-200 flex flex-col gap-4 items-center h-dvh">
+    <!-- HEADER -->
+    <header class="px-4 pt-4">
+      <h1 class="text-3xl font-bold">Fake Facebook Post Generator</h1>
+    </header>
+
+    <!-- MAIN SECTION -->
+    <main class="flex flex-col items-center gap-3 p-3 grow">
+      <section
+        id="post-area"
+        class="post-area max-w-sm bg-white rounded-lg py-2 space-y-4"
+      >
+        <div class="space-y-2">
+          <div class="info flex justify-between px-3">
+            <div class="left flex items-center gap-2">
+              <div class="profile-picture">
+                <img
+                  id="profile-picture"
+                  class="size-10 rounded-full"
+                  src="assets/author-image.jpg"
+                  alt="Profile Picture"
+                />
+              </div>
+              <div class="author flex flex-col justify-between">
+                <div class="identity flex items-center gap-1">
+                  <p id="author-name" class="font-medium">Friday Post</p>
+                  <img
+                    id="verified-badge"
+                    class="verified-badge size-6 hidden"
+                    src="assets/verified-badge.png"
+                    alt="Verified"
+                  />
+                </div>
+                <div class="post-info flex items-center text-gray-500">
+                  <span id="post-datetime" class="text-sm">2d • </span
+                  ><span
+                    ><img
+                      class="size-6"
+                      src="assets/public-globe.svg"
+                      alt="Public"
+                  /></span>
+                </div>
+              </div>
+            </div>
+            <div class="right">
+              <button class="menu">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-dots"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div id="post-content" class="content px-3">
+            মোটরসাইকেল শোডাউনের মত ছাপড়িগিরি দুনিয়ায় আর দ্বিতীয়টা নেই....
+          </div>
+          <div class="images w-full flex justify-center hidden">
+            <img id="post-image" src="assets/post-image.jpg" alt="Post Image" />
+          </div>
+          <div
+            class="interactions flex justify-between px-3 text-sm text-gray-600"
+          >
+            <div class="flex items-center gap-1">
+              <div
+                class="reaction-group z-0 flex -space-x-[px] *:size-4 *:rounded-full *:outline *:outline-white *:outline-2"
+              >
+                <img class="-z-10" src="assets/haha.svg" alt="Haha" />
+                <img class="-z-20" src="assets/like.svg" alt="Like" />
+              </div>
+              <div class="reaction-number">1.2K</div>
+            </div>
+            <div class="right flex gap-2">
+              <div><span id="comments-number">56</span> comments</div>
+              <div><span id="shares-number">46</span> shares</div>
+            </div>
+          </div>
+          <div class="bg-red-500 py-1 text-white text-center">
+            ⚠️ This is a fake post!
+          </div>
+        </div>
+        <div
+          class="interact px-3 flex justify-between *:flex *:items-center *:gap-1 *:text-gray-600 text-sm"
+        >
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-thumb-up"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"
+              />
+            </svg>
+            Like
+          </button>
+          <button onclick="commentModal.showModal()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle"
+            >
+              <g transform="scale(-1, 1) translate(-24, 0)">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1"
+                />
+              </g>
+            </svg>
+            Comment
+          </button>
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+              <path
+                d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
+              />
+            </svg>
+            Send
+          </button>
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-share-3"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7z"
+              />
+            </svg>
+            Share
+          </button>
+        </div>
+        <div class="comments-area hidden"></div>
+      </section>
+      <section
+        class="flex flex-wrap gap-3 *:bg-gray-900 *:text-white *:px-4 *:py-2 *:rounded-md"
+      >
+        <button class="download-image" type="button" onclick="downloadPost()">
+          Download Post Image
+        </button>
+        <button
+          class="create-post"
+          type="button"
+          onclick="postModal.showModal()"
+        >
+          Create New Post
+        </button>
+      </section>
+      <dialog
+        id="postModal"
+        class="backdrop:bg-gray-900/50 rounded p-4 space-y-6"
+      >
+        <h1 class="text-3xl font-bold">Create a New Post</h1>
+        <form
+          id="create-post-form"
+          class="border p-2 rounded-md space-y-8"
+          method="dialog"
+          onsubmit="postModal.close()"
+        >
+          <section class="space-y-4 *:space-y-1 *:flex *:flex-col">
+            <div>
+              <label for="new-author-name">Author Name</label>
+              <input
+                class="border rounded"
+                type="text"
+                name="new-author-name"
+                id="new-author-name"
+                value=""
+              />
+              <div class="flex">
+                <input type="checkbox" name="verified" id="new-verified" />
+                <label class="pl-1" for="new-verified">Verified?</label>
+              </div>
+            </div>
+            <div>
+              <label for="new-author-image">Author Image</label>
+              <input
+                class="file:bg-gray-900 file:text-white file:border-0 file:px-2 file:py-1 file:rounded-md"
+                type="file"
+                accept="image/*"
+                name="new-author-image"
+                id="new-author-image"
+              />
+            </div>
+            <div>
+              <label for="new-post-datetime">Date-Time</label>
+              <input
+                class="bg-transparent border rounded"
+                type="datetime-local"
+                name="new-post-datetime"
+                id="new-post-datetime"
+              />
+            </div>
+            <div>
+              <label for="new-post-content">Content</label>
+              <textarea
+                class="border rounded"
+                name="new-post-content"
+                id="new-post-content"
+              ></textarea>
+            </div>
+            <div>
+              <label for="new-post-image">Image</label>
+              <input
+                class="file:bg-gray-900 file:text-white file:border-0 file:px-2 file:py-1 file:rounded-md"
+                type="file"
+                accept="image/*"
+                name="new-post-image"
+                id="new-post-image"
+              />
+            </div>
+            <div class="reaction-selector mb-4">
+              <label>Reactions</label>
+              <div class="reaction-item mb-2 flex gap-1 *:rounded">
+                <select>
+                  <option value="like">Like</option>
+                  <option value="love">Love</option>
+                  <option value="care">Care</option>
+                  <option value="haha">Haha</option>
+                  <option value="wow">Wow</option>
+                  <option value="sad">Sad</option>
+                  <option value="angry">Angry</option>
+                </select>
+                <input
+                  class="w-full border p-1"
+                  type="number"
+                  placeholder="Count"
+                  min="0"
+                />
+              </div>
+            </div>
+            <button
+              id="add-reaction-btn"
+              type="button"
+              onclick="addReaction()"
+              class="mb-4 px-4 py-2 bg-black disabled:bg-gray-400 text-white rounded"
+            >
+              Add new Reaction
+            </button>
+            <div>
+              <label for="new-comments-number">Comments</label>
+              <input
+                class="border rounded"
+                type="number"
+                name="new-comments-number"
+                id="new-comments-number"
+                min="0"
+              />
+            </div>
+            <div>
+              <label for="new-shares-number">Shares</label>
+              <input
+                class="border rounded"
+                type="number"
+                name="new-shares-number"
+                id="new-shares-number"
+                min="0"
+              />
+            </div>
+          </section>
+          <div class="flex justify-between">
+            <button
+              class="create-post text-gray-900 px-2 py-1 rounded-md"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="create-post text-gray-900 px-2 py-1 rounded-md"
+              type="button"
+              onclick="postModal.close()"
+            >
+              Cancel
+            </button>
+            <button
+              class="bg-gray-900 text-white px-2 py-1 rounded-md"
+              type="submit"
+            >
+              Create Post
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <dialog
+        id="commentModal"
+        class="backdrop:bg-gray-900/50 rounded p-4 space-y-6"
+      >
+        <h1 class="text-3xl font-bold">Create a New Comment</h1>
+        <form
+          id="create-post-form"
+          class="border p-2 rounded-md space-y-8"
+          method="dialog"
+          onsubmit="commentModal.close()"
+        >
+          <section class="space-y-4 *:space-y-1 *:flex *:flex-col">
+            <div>
+              <label for="new-author-name">Author Name</label>
+              <input
+                class="border rounded"
+                type="text"
+                name="new-author-name"
+                id="new-author-name"
+                value=""
+              />
+              <div class="flex">
+                <input type="checkbox" name="verified" id="new-verified" />
+                <label class="pl-1" for="new-verified">Verified?</label>
+              </div>
+            </div>
+            <div>
+              <label for="new-author-image">Author Image</label>
+              <input
+                class="file:bg-gray-900 file:text-white file:border-0 file:px-2 file:py-1 file:rounded-md"
+                type="file"
+                accept="image/*"
+                name="new-author-image"
+                id="new-author-image"
+              />
+            </div>
+            <div>
+              <label for="new-post-datetime">Date-Time</label>
+              <input
+                class="bg-transparent border rounded"
+                type="datetime-local"
+                name="new-post-datetime"
+                id="new-post-datetime"
+              />
+            </div>
+            <div>
+              <label for="new-post-content">Content</label>
+              <textarea
+                class="border rounded"
+                name="new-post-content"
+                id="new-post-content"
+              ></textarea>
+            </div>
+            <div>
+              <label for="new-post-image">Image</label>
+              <input
+                class="file:bg-gray-900 file:text-white file:border-0 file:px-2 file:py-1 file:rounded-md"
+                type="file"
+                accept="image/*"
+                name="new-post-image"
+                id="new-post-image"
+              />
+            </div>
+            <div class="reaction-selector mb-4">
+              <label>Reactions</label>
+              <div class="reaction-item mb-2 flex gap-1 *:rounded">
+                <select>
+                  <option value="like">Like</option>
+                  <option value="love">Love</option>
+                  <option value="care">Care</option>
+                  <option value="haha">Haha</option>
+                  <option value="wow">Wow</option>
+                  <option value="sad">Sad</option>
+                  <option value="angry">Angry</option>
+                </select>
+                <input
+                  class="w-full border p-1"
+                  type="number"
+                  placeholder="Count"
+                  min="0"
+                />
+              </div>
+            </div>
+            <button
+              id="add-reaction-btn"
+              type="button"
+              onclick="addReaction()"
+              class="mb-4 px-4 py-2 bg-black disabled:bg-gray-400 text-white rounded"
+            >
+              Add new Reaction
+            </button>
+          </section>
+          <div class="flex justify-between">
+            <button
+              class="create-post text-gray-900 px-2 py-1 rounded-md"
+              type="reset"
+            >
+              Reset
+            </button>
+            <button
+              class="create-post text-gray-900 px-2 py-1 rounded-md"
+              type="button"
+              onclick="commentModal.close()"
+            >
+              Cancel
+            </button>
+            <button
+              class="bg-gray-900 text-white px-2 py-1 rounded-md"
+              type="submit"
+            >
+              Add Comment
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white text-center py-2 w-full">
+      Created with ♥️, by Shakil Ahmmed
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      document
+        .getElementById("create-post-form")
+        .addEventListener("submit", function createPost(e) {
+          e.preventDefault();
+
+          // Get form values
+          const authorName = document.getElementById("new-author-name").value;
+          const verified = document.getElementById("new-verified").checked;
+          const postContent = document.getElementById("new-post-content").value;
+          const commentsNumber = document.getElementById(
+            "new-comments-number"
+          ).value;
+          const sharesNumber =
+            document.getElementById("new-shares-number").value;
+
+          // Handle image inputs
+          const authorImage =
+            document.getElementById("new-author-image").files[0];
+          const postImage = document.getElementById("new-post-image").files[0];
+
+          // Update UI
+          document.getElementById("author-name").innerText = authorName;
+          document.getElementById("post-content").innerText = postContent;
+          document.getElementById("comments-number").innerText = commentsNumber;
+          document.getElementById("shares-number").innerText = sharesNumber;
+
+          if (verified) {
+            document
+              .getElementById("verified-badge")
+              .classList.remove("hidden");
+          } else {
+            document.getElementById("verified-badge").classList.add("hidden");
+          }
+
+          if (authorImage) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              document.getElementById("profile-picture").src = e.target.result;
+            };
+            reader.readAsDataURL(authorImage);
+          }
+
+          if (postImage) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              document.getElementById("post-image").src = e.target.result;
+            };
+            reader.readAsDataURL(postImage);
+          }
+
+          // Get date and time values from the datetime-local input
+          const datetimeValue =
+            document.getElementById("new-post-datetime").value;
+
+          if (datetimeValue) {
+            // Convert the selected datetime string to a Date object
+            const inputDate = new Date(datetimeValue);
+
+            // Get the difference in time (in milliseconds) from now
+            const now = new Date();
+            const diffInMs = now - inputDate;
+
+            let formattedTime = "";
+
+            if (diffInMs < 60 * 1000) {
+              // Less than a minute ago
+              formattedTime = "Just now";
+            } else if (diffInMs < 60 * 60 * 1000) {
+              // Less than an hour ago
+              const minutes = Math.floor(diffInMs / (60 * 1000));
+              formattedTime = `${minutes}m`;
+            } else if (diffInMs < 24 * 60 * 60 * 1000) {
+              // Less than a day ago
+              const hours = Math.floor(diffInMs / (60 * 60 * 1000));
+              formattedTime = `${hours}h`;
+            } else if (diffInMs < 48 * 60 * 60 * 1000) {
+              // Within the past two days
+              formattedTime = "1d";
+            } else {
+              // More than two days ago
+              const days = Math.floor(diffInMs / (24 * 60 * 60 * 1000));
+              formattedTime = `${days}d`;
+            }
+
+            // Display the formatted time
+            document.getElementById(
+              "post-datetime"
+            ).textContent = `${formattedTime} • `;
+          } else {
+            alert("Please select a date and time.");
+          }
+
+          // Function to update the emojis based on selected values and counts
+          const reactionEmojis = {
+            like: "like",
+            love: "love",
+            care: "care",
+            haha: "haha",
+            wow: "wow",
+            sad: "sad",
+            angry: "angry"
+          };
+          function updateEmojis() {
+            // Clear previous emojis and total count
+            emojiDisplayDiv.innerHTML = "";
+            totalCountDiv.innerHTML = "";
+
+            let totalReactions = 0;
+            const reactions = [];
+
+            // Get all reaction items (each containing a select and an input)
+            const reactionItems =
+              interactionsDiv.querySelectorAll(".reaction-item");
+
+            // Gather reactions and their counts
+            reactionItems.forEach(item => {
+              const select = item.querySelector("select");
+              const input = item.querySelector("input");
+              const count = parseInt(input.value) || 0; // Default to 0 if no value
+
+              if (count > 0) {
+                const reaction = select.value;
+                reactions.push({ reaction, count });
+                totalReactions += count;
+              }
+            });
+
+            // Sort reactions by count (highest to lowest)
+            reactions.sort((a, b) => b.count - a.count);
+
+            // Display sorted emojis with z-index classes
+            reactions.forEach((reaction, index) => {
+              const emojiElement = document.createElement("img");
+              emojiElement.src = `assets/${
+                reactionEmojis[reaction.reaction]
+              }.svg`;
+
+              // Assign the appropriate z-index class based on the index
+              emojiElement.classList.add(`-z-${(index + 1) * 10}`);
+              emojiDisplayDiv.appendChild(emojiElement);
+            });
+
+            // Format and display total count of all reactions
+            totalCountDiv.textContent = formatNumber(totalReactions);
+          }
+          updateEmojis();
+        });
+      function downloadPost() {
+        const container = document.getElementById("post-area");
+        htmlToImage
+          .toPng(container, { pixelRatio: 3 })
+          .then(dataUrl => {
+            const link = document.createElement("a");
+            link.href = dataUrl;
+            link.download = "facebook-post.png";
+            link.click();
+          })
+          .catch(error => {
+            console.error("Error capturing the post:", error);
+          });
+      }
+      // Define a map of reactions to their corresponding emojis
+
+      const interactionsDiv = document.querySelector(".reaction-selector");
+      const emojiDisplayDiv = document.querySelector(".reaction-group");
+      const totalCountDiv = document.querySelector(".reaction-number");
+      const addReactionBtn = document.getElementById("add-reaction-btn");
+
+      // Function to add a new reaction (select + input pair)
+      function addReaction() {
+        const reactionItem = document.querySelector(".reaction-item");
+        const newReactionItem = reactionItem.cloneNode(true);
+
+        // Clear the number input in the cloned element to avoid carrying over the value
+        newReactionItem.querySelector("input").value = "";
+
+        interactionsDiv.appendChild(newReactionItem);
+
+        // If 3 or more reactions are added, disable the button
+        if (interactionsDiv.querySelectorAll(".reaction-item").length >= 3) {
+          addReactionBtn.disabled = true;
+        }
+      }
+
+      // Function to format large numbers into a readable format (e.g., 5.6K)
+      function formatNumber(num) {
+        if (num >= 1000) {
+          const formatter = new Intl.NumberFormat("en", {
+            notation: "compact",
+            compactDisplay: "short"
+          });
+          return formatter.format(num); // Returns '32K', '5.6K', etc.
+        }
+        return num.toString();
+      }
+    </script>
+  </body>
+</html>
