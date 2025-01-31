@@ -123,7 +123,7 @@
             </svg>
             Like
           </button>
-          <button onclick="commentModal.showModal()">
+          <button onclick="commentModal.showModal()" disabled>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -205,7 +205,7 @@
       </section>
       <dialog
         id="postModal"
-        class="backdrop:bg-gray-900/50 rounded p-4 space-y-6"
+        class="backdrop:bg-gray-900/50 mx-auto rounded p-4 space-y-6"
       >
         <h1 class="text-3xl font-bold">Create a New Post</h1>
         <form
@@ -340,7 +340,7 @@
       </dialog>
       <dialog
         id="commentModal"
-        class="backdrop:bg-gray-900/50 rounded p-4 space-y-6"
+        class="backdrop:bg-gray-900/50 mx-auto rounded p-4 space-y-6"
       >
         <h1 class="text-3xl font-bold">Create a New Comment</h1>
         <form
